@@ -1,0 +1,29 @@
+spring:
+  application:
+     name: vic-ms-zuul  # Nombre del servicio
+
+
+zuul:
+  #ignoredServices: '*'
+  routes:
+    saludo:
+      path: /saludo/**
+      serviceId: SALUDO
+      stripPrefix: false
+      #url: http://localhost:3001/saludo/
+    clienteSaludo:
+      path: /clienteSaludo/**
+      serviceId: CLIENTE-SALUDO
+      stripPrefix: false
+      #url: http://localhost:3002/clienteSaludo/
+
+# Configuración del servidor eureka 
+eureka:
+  client:
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+
+
+server:
+  port: 1003   # HTTP (Tomcat) port
